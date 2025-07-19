@@ -1,0 +1,38 @@
+random_seed: 0
+model_name: pretrain_model
+phase: test
+
+gpuid: 1
+save: 10
+pretrain: False
+
+lev0: True
+lev1: True
+iters_lev0: 5
+iters_lev1: 5
+window_size: 8
+
+# save_dir: '/media/mygo/partition4_hard/zzx/shizeru/haze_VOC/train/warp'
+# save_dir1: '/media/mygo/partition4_hard/zzx/shizeru/haze_VOC/train/merge'
+
+
+name: 'voc'
+# phase: 'wapr'
+dataset_root: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_meta_label/test'
+
+# image1: '/media/mygo/partition2/zzx/shizeru/CKM/other/data/voc_test_haze/input1'
+# image2: '/media/mygo/partition2/zzx/shizeru/CKM/other/data/voc_test_haze/input2'
+# image_truth: '/media/mygo/partition4_hard/zzx/shizeru/draw_box/GTC/raw'
+
+# label: '/media/mygo/partition2/zzx/shizeru/CKM/other/data/voc_test/img_mask'
+
+image1: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain/input1'
+image2: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain/input2'
+image_truth: '/media/mygo/partition4_hard/zzx/shizeru/draw_box/GTC/raw'
+
+
+label: '/media/mygo/partition4_hard/zzx/shizeru/voc_test/img_mask'
+shift: '/media/mygo/partition4_hard/zzx/shizeru/voc_test/shift'
+# voc_test_rain voc_test_haze  voc_test_ll1  voc_test
+batch_size: 1
+num_works: 4

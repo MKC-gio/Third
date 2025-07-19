@@ -1,0 +1,32 @@
+random_seed: 0
+model_name: pretrain_model
+phase: test
+
+gpuid: 1
+save: 10
+pretrain: False
+
+lev0: True
+lev1: True
+iters_lev0: 5
+iters_lev1: 5
+window_size: 8
+
+save_dir: '/media/mygo/partition4_hard/zzx/shizeru/haze_VOC/train/warp'
+save_dir1: '/media/mygo/partition4_hard/zzx/shizeru/haze_VOC/train/merge'
+
+
+name: 'HomoGr'
+# phase: 'rain
+# phase: 'wapr'
+# dataset_root: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_meta_label/test'
+image1: '/media/mygo/partition4_hard/zzx/shizeru/MID_outdoor/input1'
+image2: '/media/mygo/partition4_hard/zzx/shizeru/MID_outdoor/input2'
+# label: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain/img_mask'
+shift: '/media/mygo/partition4_hard/zzx/shizeru/HomoGr/shift'
+# image1: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc/test/input1'
+# image2: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc/test/input2'
+# label: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain/img_mask'
+# shift: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc/test/shift'
+batch_size: 1
+num_works: 4

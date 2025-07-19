@@ -1,0 +1,63 @@
+random_seed: 0
+model_name: pretrain_model
+phase: test
+
+gpuid: 1
+save: 10
+pretrain: False
+
+lev0: True
+lev1: True
+iters_lev0: 5
+iters_lev1: 5
+window_size: 8
+
+# save_dir: '/media/mygo/partition4_hard/zzx/shizeru/haze_VOC/train/warp'
+# save_dir1: '/media/mygo/partition4_hard/zzx/shizeru/haze_VOC/train/merge'
+
+
+name: 'voc'
+# phase: 'wapr'
+dataset_root: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain'
+
+
+image1: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain/input1'
+image2: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain/input2'
+# image_truth: '/media/mygo/partition4_hard/zzx/shizeru/draw_box/GTC/raw'
+
+
+label: '/media/mygo/partition4_hard/zzx/shizeru/voc_test/img_mask'
+shift: '/media/mygo/partition4_hard/zzx/shizeru/voc_test/shift'
+# image1: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc/test/input1'
+# image2: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc/test/input2'
+# label: '/media/mygo/partition4_hard/zzx/shizeru/voc_test_rain/img_mask'
+# shift: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc/test/shift'
+batch_size: 1
+num_works: 4
+
+
+
+# 数据集路径
+#dataset_paths:
+  #rain: '/media/mygo/partition4_hard/zzx/shizeru/CA_rain'
+  #haze: '/media/mygo/partition4_hard/zzx/shizeru/CA_haze'
+  #ll: '/media/mygo/partition4_hard/zzx/shizeru/CA_ll'
+  #normal: '/media/mygo/partition4_hard/zzx/shizeru/CAHomo_raw'
+
+# 预训练模型路径
+#pretrain_model_paths:
+  #rain: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/pretrain_f5_rain/81_pretrain_net_20.pth'
+  #haze: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/pretrain_l5_haze/81_pretrain_net_20.pth'
+  #ll: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/pretrain_l5_ll_3/81_pretrain_net_20.pth'
+  #normal: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/pretrain_f5_rain/81_pretrain_net_20.pth'  # 可以和rain环境相同
+
+# 训练模型路径
+#train_model_paths:
+  #rain: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/train_rain_l5_truth/MetaHomo_0round_50epoch.pth'
+  #haze: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/train_haze_l5_truth/MetaHomo_0round_50epoch.pth'
+  #ll: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/train_ll_l5_truth/MetaHomo_0round_50epoch.pth'
+  #normal: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/train_rain_l5_truth/MetaHomo_0round_50epoch.pth'  # 可以和rain环境相同
+
+
+# 训练和预训练模型的评估路径
+# save_dir: '/media/mygo/partition2/zzx/shizeru/CKM/meta2/heapmap'

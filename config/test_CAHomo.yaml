@@ -1,0 +1,27 @@
+random_seed: 0
+model_name: pretrain_model
+
+gpuid: 1
+save: 10
+pretrain: True
+
+lev0: True
+lev1: True
+iters_lev0: 5
+iters_lev1: 5
+window_size: 8
+
+
+name: 'CAHomo'
+phase: 'test'
+# data_root: '/media/mygo/partition4_hard/zzx/shizeru/haze_VOC/train'
+img: '/media/mygo/partition4_hard/zzx/shizeru/CAHomo_raw'
+# img: '/media/mygo/partition4_hard/zzx/shizeru/CA_ll'
+# img: '/media/mygo/partition4_hard/zzx/shizeru/CA_rain'
+# img: '/media/mygo/partition4_hard/zzx/shizeru/CA_haze'
+shift: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/Data/evaluation_files'
+# img: '/media/mygo/partition4_hard/zzx/shizeru/CA_ll'
+# shift: '/media/mygo/partition4_hard/zzx/shizeru/CA_rain/shift'
+crop_size: 192
+batch_size: 1
+num_works: 4

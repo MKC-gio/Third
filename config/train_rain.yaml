@@ -1,0 +1,107 @@
+random_seed: 0
+name: MetaHomo
+phase: train
+accumu: 4
+
+
+gpuid: 1
+save_dir: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/train_rain_a3_truth'
+save_ans: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/res'
+# ssd_warp1: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc/warp'
+# log_dir: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/log_dir'
+
+
+trainset:
+  name: 'voc'
+  phase: train
+  dataset_root: VOC_ROOT
+  image1: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_label_20000/train/input1'
+  image2: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_label_20000/train/input2'
+  shift: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_label_20000/train/shift'
+  batch_size: 32
+  num_works: 4
+
+supset:
+  name: 'voc'
+  phase: train
+  pretrain: False
+  data_root: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/support'
+  image1: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/support/input1'
+  image2: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/support/input2'
+  label: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/support/img_mask'
+  shift: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/support/shift'
+  crop_size: 192
+  batch_size: 16
+  num_works: 8
+
+queset:
+  trainset:
+    name: 'voc'
+    phase: train
+    pretrain: False
+    dataset_root: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/train'
+    image1: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/train/input1'
+    image2: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/train/input2'
+    label: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/train/img_mask'
+    shift: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/train/shift'
+    crop_size: 192
+    batch_size: 8
+    num_works: 8
+
+  testset:
+    name: 'CAHomo'
+    phase: test
+    pretrain: False
+    dataset_root: '/media/mygo/partition4_hard/zzx/shizeru/CA_rain'
+    # image1: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/test/input1'
+    # image2: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/test/input2'
+    # label: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/test/img_mask'
+    # shift: '/media/mygo/partition4_hard/zzx/shizeru/rain_voc_meta_label/query/test/shift'
+    img: '/media/mygo/partition4_hard/zzx/shizeru/CA_rain'
+    shift: '/media/mygo/partition4_hard/zzx/shizeru/CA_rain/shift'
+    crop_size: 192
+    batch_size: 8
+    num_works: 8
+  
+total_round: 2
+recnum: 2
+
+model:
+  clip: 1.0
+  ssd:
+    lr: 0.001
+    momentum: 0.9
+    wdecay: 0.0005
+    gamma: 0.1
+    epochs: 20
+    lr_steps: [10000, 15000, 20000,25000,30000]
+    print_step: 100
+  
+  meta:
+    lr: 0.0001
+    wdecay: 0.00001
+    epsilon: 0.00000001
+    
+  fusion:
+    gpuid: 1
+    max_epochs: 50
+    lr: 0.0001
+    wdecay: 0.0001
+    resume:
+    lev0: True
+    lev1: True
+    iters_lev0: 5
+    iters_lev1: 5
+    window_size: 8
+    gan_type: 'WGAN_GP'
+    gamma: 0.85
+    print: 100
+  
+
+save_freq: 10
+amp: True
+
+
+
+
+

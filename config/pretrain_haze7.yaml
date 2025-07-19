@@ -1,0 +1,55 @@
+random_seed: 0
+name: pretrain_model
+# phase: train
+
+gpuid: 0
+save: 10
+pretrain: True
+
+
+
+lev0: True
+lev1: True
+iters_lev0: 5
+iters_lev1: 5
+window_size: 8
+log_dir: '/media/mygo/partition2/zzx/shizeru/Meta-Homo/log_dir'
+save_dir: '/media/mygo/partition2/zzx/shizeru/CKM/meta2/pretrain_scale/scale_8_16/haze'
+
+trainset:
+  name: 'voc'
+  phase: 'train'
+  data_root: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/train'
+  image1: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/train/input1'
+  image2: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/train/input2'
+  shift: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/train/shift'
+  label: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/train/label'
+  crop_size: 192
+  batch_size: 16
+  num_works: 16
+  pretrain: True
+
+testset:
+  name: 'voc'
+  phase: val
+  data_root: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/test'
+  image1: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/test/input1'
+  image2: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/test/input2'
+  shift: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/test/shift'
+  label: '/media/mygo/partition4_hard/zzx/shizeru/haze_voc_20000/test/label'
+  crop_size: 192
+  batch_size: 1
+  num_works: 16
+
+lr: 0.0001
+wdecay: 0.0001
+start_iter: 0
+max_epoch: 100
+lambda_flow: 0.01
+gan_type: 'WGAN_GP'
+amp: True
+gamma: 0.85
+clip: 1.0
+epsilon: 0.00000001
+
+resume: 
